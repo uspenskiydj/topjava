@@ -13,9 +13,7 @@ import ru.javawebinar.topjava.UserTestData;
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
-
 import java.util.List;
-
 import static org.junit.Assert.assertThrows;
 import static ru.javawebinar.topjava.UserTestData.*;
 
@@ -38,9 +36,9 @@ public class UserServiceTest {
 
     @Test
     public void create() throws Exception {
-        User newUser = getNew();
-        User created = service.create(newUser);
+        User created = service.create(getNew());
         Integer newId = created.getId();
+        User newUser = getNew();
         newUser.setId(newId);
         assertMatch(created, newUser);
         assertMatch(service.get(newId), newUser);
@@ -84,7 +82,7 @@ public class UserServiceTest {
     public void update() throws Exception {
         User updated = getUpdated();
         service.update(updated);
-        assertMatch(service.get(USER_ID), updated);
+        assertMatch(service.get(USER_ID), getUpdated());
     }
 
     @Test

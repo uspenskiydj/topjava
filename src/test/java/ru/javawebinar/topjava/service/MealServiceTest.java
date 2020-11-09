@@ -57,14 +57,14 @@ public class MealServiceTest {
     public void update() {
         Meal updated = getUpdated();
         service.update(updated, USER_ID);
-        assertMatch(service.get(MEAL_ID, USER_ID), updated);
+        assertMatch(service.get(MEAL_ID, USER_ID), getUpdated());
     }
 
     @Test
     public void create() {
-        Meal newMeal = getNew();
-        Meal created = service.create(newMeal, USER_ID);
+        Meal created = service.create(getNew(), USER_ID);
         Integer newId = created.getId();
+        Meal newMeal = getNew();
         newMeal.setId(newId);
         assertMatch(created, newMeal);
         assertMatch(service.get(newId, USER_ID), newMeal);
