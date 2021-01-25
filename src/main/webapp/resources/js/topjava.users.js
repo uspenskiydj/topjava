@@ -14,7 +14,6 @@ function enable(chkbox, id) {
         $(chkbox).prop("checked", !enabled);
     });
 }
-
 // $(document).ready(function () {
 $(function () {
     // https://stackoverflow.com/a/5064235/548473
